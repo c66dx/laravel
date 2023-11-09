@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
+use App\Models\SubCategory;
+use App\Http\Controllers\Controller;
 
-class adminProductSubCategoryController extends Controller
+class ProductSubCategoryController extends Controller
 {
     public function index(Request $request) {
         
@@ -25,7 +27,5 @@ class adminProductSubCategoryController extends Controller
             ]);
 
         }
-        
-
     }
 }
