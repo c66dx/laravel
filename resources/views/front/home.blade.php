@@ -31,9 +31,9 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	
 
-	<link rel="stylesheet" type="text/css" href="{{ asset('front-assets/csss/slick.css') }}" />
-	<link rel="stylesheet" type="text/css" href="css/slick-theme.css" />
-	<link rel="stylesheet" type="text/css" href="css/video-js.css" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('front-assets/css/slick.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('front-assets/css/slick-theme.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('front-assets/css/style.css') }}" />
 
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -158,9 +158,9 @@
                     <!-- <img src="images/carousel-1.jpg" class="d-block w-100" alt=""> -->
 
                     <picture>
-                        <source media="(max-width: 799px)" srcset="images/carousel-1-m.jpg" />
-                        <source media="(min-width: 800px)" srcset="images/carousel-1.jpg" />
-                        <img src="images/carousel-1.jpg" alt="" />
+                        <source media="(max-width: 799px)" srcset="{{ asset('front-assets/images/carousel-1-m.jpg') }}" />
+                        <source media="(min-width: 800px)" srcset="{{ asset('front-assets/images/carousel-1.jpg') }}" />
+                        <img src="{{ asset('front-assets/images/carousel-1.jpg') }}" alt="" />
                     </picture>
 
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
@@ -766,12 +766,12 @@
 		</div>
 	</div>
 </footer>
-<script src="js/jquery-3.6.0.min.js"></script>
-<script src="js/bootstrap.bundle.5.1.3.min.js"></script>
-<script src="js/instantpages.5.1.0.min.js"></script>
-<script src="js/lazyload.17.6.0.min.js"></script>
-<script src="js/slick.min.js"></script>
-<script src="js/custom.js"></script>
+<script src="{{ asset('front-assets/js/jquery-3.6.0.min.js') }}"></script>
+<script src="{{ asset('front-assets/js/bootstrap.bundle.5.1.3.min.js') }}"></script>
+<script src="{{ asset('front-assets/js/instantpages.5.1.0.min.js') }}"></script>
+<script src="{{ asset('front-assets/js/lazyload.17.6.0.min.js') }}"></script>
+<script src="{{ asset('front-assets/js/slick.min.js') }}"></script>
+<script src="{{ asset('front-assets/js/custom.js') }}"></script>
 <script>
 window.onscroll = function() {myFunction()};
 
