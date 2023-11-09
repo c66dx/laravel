@@ -13,6 +13,20 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('slug');
+            $table->string('description')->nullable();
+            $table->double('price',10,2);
+            $table->double('compare_price',10,2)->nullable();
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('sub_category')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('brand_id')->nullable()->constrained()->onDelete('cascade');
+            $table->enum('is_featured',['Yes','No'])->default('No');
+            $table->string('sku');
+            $table->string('barcode')->nullable();
+            $table->enum('track_qty',['Yes','No'])->default('Yes');
+            $table->integer('qty')->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
