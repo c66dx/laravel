@@ -61,6 +61,15 @@ In order to ensure that the Laravel community is welcoming to all, please review
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
+
+
+insANO AAA NASHE 
+WDAAWKLDJ928347 N23FO3N82F5
+23FN358F725F2
+35FN2F238F2N73F2
+V2
+N5Fsadasdasd8252V2
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
