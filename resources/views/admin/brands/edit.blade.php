@@ -6,7 +6,7 @@
 					<div class="container-fluid my-2">
 						<div class="row mb-2">
 							<div class="col-sm-6">
-								<h1>Create Brand</h1>
+								<h1>Edit Brand</h1>
 							</div>
 							<div class="col-sm-6 text-right">
 								<a href="brands.html" class="btn btn-primary">Back</a>
@@ -19,21 +19,21 @@
 				<section class="content">
 					<!-- Default box -->
 					<div class="container-fluid">
-                        <form action="" id="creteBrandForm" name="creteBrandForm" method="post">
+                        <form action="" id="editBrandForm" name="editBrandForm" method="post">
 						    <div class="card">
 						    	<div class="card-body">								
 						    		<div class="row">
 						    			<div class="col-md-6">
 						    				<div class="mb-3">
 						    					<label for="name">Name</label>
-						    					<input type="text" name="name" id="name" class="form-control" placeholder="Name">	
+						    					<input type="text" name="name" id="name" class="form-control" placeholder="Name" value="{{ $brand->name }}">	
                                                 <p></p>
                                             </div>
 						    			</div>
 						    			<div class="col-md-6">
 						    				<div class="mb-3">
 						    					<label for="email">Slug</label>
-						    					<input type="text" readonly name="slug" id="slug" class="form-control" placeholder="Slug">	
+						    					<input type="text" readonly name="slug" id="slug" class="form-control" placeholder="Slug" value="{{ $brand->slug }}">	
                                                 <p></p>
 						    				</div>
                                         </div>
@@ -41,8 +41,8 @@
 						    				<div class="mb-3">
 						    					<label for="email">Status</label>
                                                 <select name="status" id="status" class="form-control">
-                                                    <option value="1">Active</option>
-                                                    <option value="0">Block</option>
+                                                    <option {{ ($brand->status == 1) ? 'selected' : '' }} value="1">Active</option>
+                                                    <option {{ ($brand->status == 0) ? 'selected' : '' }}value="0">Block</option>
                                                 </select>
                                                 <p></p>
 						    				</div>
@@ -51,7 +51,7 @@
 						    	</div>							
                             </div>
 						    <div class="pb-5 pt-3">
-						    	<button type="submit" class="btn btn-primary">Create</button>
+						    	<button type="submit" class="btn btn-primary">Update</button>
 						    	<a href="brands.html" class="btn btn-outline-dark ml-3">Cancel</a>
                             </div>
                         </form>
@@ -64,13 +64,13 @@
 @section('customJs')
 
 <script>
-$("#creteBrandForm").submit(function(event){
+$("#editBrandForm").submit(function(event){
     event.preventDefault();
     var element = $(this);
     $("button[type=submit]").prop('disabled',true);
     $.ajax({
-        url: '{{ route("brands.store") }}',
-        type: 'post',
+        url: '{{ route("brands.update", $brand->id) }}',
+        type: 'put',
         data: element.serializeArray(),
         dataType: 'json',
         success: function(response){
@@ -89,6 +89,11 @@ $("#creteBrandForm").submit(function(event){
                 // .removeClass('invalid-feedback').html("");
             
             } else {
+
+                if (response['notFound'] == true) {
+                    window.location.href = "{{ route('brands.index') }}";
+                }
+
                 var errors = response['errors'];
                 if (errors['name']) {
                     $("#name").addClass('is-invalid')
