@@ -241,7 +241,7 @@
                         // }
                         
                         $(".error").removeClass('invalid-feedback').html('');
-                        $("input[type='text'], select").removeClass('is-invalid');
+                        $("input[type='text'], select, input[type='number']").removeClass('is-invalid');
                         $.each(errors, function(key,value){
                             $(`#${key}`).addClass('is-invalid')
                             .siblings('p')
