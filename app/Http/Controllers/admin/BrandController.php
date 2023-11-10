@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Brand;
+use Illuminate\Support\Facades\Session;
 
 class BrandController extends Controller
 {
@@ -20,6 +21,7 @@ class BrandController extends Controller
 
         return view('admin.brands.list',compact('brands'));
     }
+
     public function create() {
         return view('admin.brands.create');
     }
@@ -37,12 +39,16 @@ class BrandController extends Controller
             $brand->status= $request->status;
             $brand->save();
 
+            Session::flash('success', 'Brand added successfully.');
+
             return response()->json([
                 'status' => true,
-                'message' => 'Brand added succesfully.'
+                'message' => 'Brand added successfully.'
             ]);
 
-        } else{
+        } else {
+            Session::flash('error', 'Error adding brand. Please check the form.');
+
             return response()->json([
                 'status' => false,
                 'errors' => $validator->errors()
@@ -98,28 +104,33 @@ class BrandController extends Controller
     
     public function destroy($id, Request $request) {
         $brand = Brand::find($id);
-    
+
         if (empty($brand)) {
-            $request->session()->flash('error', 'Record not found');
+            Session::flash('error', 'Record not found.');
+
             return response([
                 'status' => false,
                 'notFound' => true
             ]);
         }
-    
+
         if ($brand->delete()) {
-            $request->session()->flash('success', 'Brand deleted successfully.');
+            Session::flash('success', 'Brand deleted successfully.');
+
             return response([
                 'status' => true,
                 'message' => 'Brand deleted successfully.'
             ]);
         } else {
+            Session::flash('error', 'Failed to delete brand.');
+
             return response([
                 'status' => false,
                 'message' => 'Failed to delete brand.'
             ]);
         }
     }
-    
 }
+    
+
 

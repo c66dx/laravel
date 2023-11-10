@@ -9,7 +9,7 @@
 								<h1>Create Brand</h1>
 							</div>
 							<div class="col-sm-6 text-right">
-								<a href="brands.html" class="btn btn-primary">Back</a>
+								<a href="{{route('brands.index')}}" class="btn btn-primary">Back</a>
 							</div>
 						</div>
 					</div>
@@ -52,7 +52,7 @@
                             </div>
 						    <div class="pb-5 pt-3">
 						    	<button type="submit" class="btn btn-primary">Create</button>
-						    	<a href="brands.html" class="btn btn-outline-dark ml-3">Cancel</a>
+                                <a href="{{ route('brands.index') }}" class="btn btn-outline-dark ml-3">Cancel</a>
                             </div>
                         </form>
 					</div>
@@ -77,16 +77,17 @@ $("#creteBrandForm").submit(function(event){
             $("button[type=submit]").prop('disabled',false);
 
             if (response["status"] == true) {
+                
+                
+                window.location.href="{{ route('brands.index') }}";
 
-                // window.location.href="{{ route('categories.index') }}";
+                 //$("#name").removeClass('is-invalid')
+                 //    .siblings('p')
+                 //    .removeClass('invalid-feedback').html("");
 
-                // $("#name").removeClass('is-invalid')
-                //     .siblings('p')
-                //     .removeClass('invalid-feedback').html("");
-
-                // $("#slug").removeClass('is-invalid')
-                // .siblings('p')
-                // .removeClass('invalid-feedback').html("");
+                 //$("#slug").removeClass('is-invalid')
+                 //.siblings('p')
+                 //.removeClass('invalid-feedback').html("");
             
             } else {
                 var errors = response['errors'];
@@ -133,6 +134,33 @@ $("#name").change(function(){
             }
         }
     });
+});
+Dropzone.autoDiscover = false;    
+const dropzone = $("#image").dropzone({ 
+    init: function() {
+        this.on('addedfile', function(file) {
+            if (this.files.length > 1) {
+                this.removeFile(this.files[0]);
+            }
+        });
+    },
+    url:  "{{ route('temp-images.create') }}",
+    maxFiles: 1,
+    paramName: 'image',
+    addRemoveLinks: true,
+    acceptedFiles: "image/jpeg,image/png,image/gif",
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }, success: function(file, response){
+        $("#image_id").val(response.image_id);
+        //console.log(response)
+    }
+});
+
+// Manejar el clic en el botón "Cancel"
+$("a.btn-outline-dark").on("click", function(e){
+    e.preventDefault();
+    window.location.href = "{{ route('brands.index') }}";
 });
 </script>
 @endsection

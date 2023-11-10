@@ -19,7 +19,8 @@
 				<section class="content">
 					<!-- Default box -->
 					<div class="container-fluid">
-                        <form action="" id="editBrandForm" name="editBrandForm" method="post">
+                        <form action="{{ route('brands.update', $brand->id) }}" id="editBrandForm" name="editBrandForm" method="post">
+                            @csrf
 						    <div class="card">
 						    	<div class="card-body">								
 						    		<div class="row">
@@ -77,8 +78,9 @@ $("#editBrandForm").submit(function(event){
             $("button[type=submit]").prop('disabled',false);
 
             if (response["status"] == true) {
+                alert(response.message);
 
-                // window.location.href="{{ route('categories.index') }}";
+                window.location.href="{{ route('brands.index') }}";
 
                 // $("#name").removeClass('is-invalid')
                 //     .siblings('p')
