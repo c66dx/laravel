@@ -9,7 +9,7 @@
 								<h1>Edit Brand</h1>
 							</div>
 							<div class="col-sm-6 text-right">
-								<a href="brands.html" class="btn btn-primary">Back</a>
+								<a href="{{ route('brands.index') }}" class="btn btn-primary">Back</a>
 							</div>
 						</div>
 					</div>
@@ -42,7 +42,7 @@
 						    					<label for="email">Status</label>
                                                 <select name="status" id="status" class="form-control">
                                                     <option {{ ($brand->status == 1) ? 'selected' : '' }} value="1">Active</option>
-                                                    <option {{ ($brand->status == 0) ? 'selected' : '' }}value="0">Block</option>
+                                                    <option {{ ($brand->status == 0) ? 'selected' : '' }} value="0">Block</option>
                                                 </select>
                                                 <p></p>
 						    				</div>
@@ -52,7 +52,7 @@
                             </div>
 						    <div class="pb-5 pt-3">
 						    	<button type="submit" class="btn btn-primary">Update</button>
-						    	<a href="brands.html" class="btn btn-outline-dark ml-3">Cancel</a>
+						    	<a href="{{ route('brands.index') }}" class="btn btn-outline-dark ml-3">Cancel</a>
                             </div>
                         </form>
 					</div>

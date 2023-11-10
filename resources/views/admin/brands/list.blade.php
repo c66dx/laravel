@@ -102,8 +102,8 @@
 
 @section('customJs')
 <script>
-    function deleteCategory(id){
-        var url = '{{ route("categories.delete", "ID") }}';
+    function deleteBrand(id){
+        var url = '{{ route("brands.delete", "ID") }}';
         var newUrl = url.replace("ID",id);
 
         if (confirm("Are you sure you want to delete?")){
@@ -117,7 +117,7 @@
                 },
                 success: function(response){
                     if (response["status"]) {
-                        window.location.href="{{ route('categories.index') }}";
+                        window.location.href="{{ route('brands.index') }}";
                     }
                 }
             });

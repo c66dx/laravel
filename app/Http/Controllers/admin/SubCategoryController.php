@@ -123,7 +123,6 @@ class SubCategoryController extends Controller
             ]);
         }
     }
-
     public function destroy($id, Request $request) {
         $subCategory = SubCategory::find($id);
         if (empty($subCategory)) {

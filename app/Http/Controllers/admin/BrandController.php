@@ -62,39 +62,64 @@ class BrandController extends Controller
     }
 
     public function update($id, Request $request) {
-        
         $brand = Brand::find($id);
-
+    
         if (empty($brand)) {
-            $request->session()->flash('error','Record not found.');
+            $request->session()->flash('error', 'Record not found.');
             return response()->json([
                 'status' => false,
                 'notFound' => true
             ]);
         }
-
-        $validator = Validator::make($request->all(),[
+    
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'slug' => 'required|unique:brands,slug,'.$brand->id.',id',
+            'slug' => 'required|unique:brands,slug,' . $brand->id . ',id',
         ]);
-
-        if($validator->passes()){
-            $brand = new Brand();
+    
+        if ($validator->passes()) {
             $brand->name = $request->name;
             $brand->slug = $request->slug;
-            $brand->status= $request->status;
+            $brand->status = $request->status;
             $brand->save();
-
+    
             return response()->json([
                 'status' => true,
-                'message' => 'Brand update succesfully'
+                'message' => 'Brand updated successfully'
             ]);
-
-        } else{
+    
+        } else {
             return response()->json([
                 'status' => false,
                 'errors' => $validator->errors()
             ]);
         }
     }
+    
+    public function destroy($id, Request $request) {
+        $brand = Brand::find($id);
+    
+        if (empty($brand)) {
+            $request->session()->flash('error', 'Record not found');
+            return response([
+                'status' => false,
+                'notFound' => true
+            ]);
+        }
+    
+        if ($brand->delete()) {
+            $request->session()->flash('success', 'Brand deleted successfully.');
+            return response([
+                'status' => true,
+                'message' => 'Brand deleted successfully.'
+            ]);
+        } else {
+            return response([
+                'status' => false,
+                'message' => 'Failed to delete brand.'
+            ]);
+        }
+    }
+    
 }
+
