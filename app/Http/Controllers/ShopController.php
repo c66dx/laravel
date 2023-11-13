@@ -61,7 +61,7 @@ class ShopController extends Controller
             $products = $products->orderBy('id','DESC');
         }
 
-        $products = $products->get();
+        $products = $products->paginate(6);
 
         $data['categories'] = $categories;
         $data['brands'] = $brands;
