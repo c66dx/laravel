@@ -78,6 +78,8 @@ class ProductController extends Controller
             $product->is_featured = $request->is_featured;
             $product->shipping_returns = $request->shipping_returns;
             $product->short_description = $request->short_description;
+            $product->related_products = (!empty($request->related_products)) ? implode(',',$request->related_products) : '';
+
             $product->save();
 
 
@@ -150,7 +152,7 @@ class ProductController extends Controller
         // Fetch Related Products
         if ($product->related_products != '') {
             $productArray = explode(',',$product->related_products);
-            $relatedProducts = Product::whereIn('id',$productArray)->get();
+            $relatedProducts = Product::whereIn('id',$productArray)->with('product_images')->get();
         }
 
 
