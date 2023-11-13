@@ -140,7 +140,7 @@
                     <div class="col-md-3">
                         <div class="card product-card">
                             <div class="product-image position-relative">
-                                <a href="" class="product-img">
+                                <a href="{{ route("front.product",$product->slug) }}" class="product-img">
                                     @if (!empty($productImage->image))
                                         <img class="card-img-top" src="{{ asset('/uploads/product/small/'.$productImage->image) }}" />
                                     @else
@@ -149,7 +149,7 @@
                                 </a>
                                 <a class="whishlist" href="222"><i class="far fa-heart"></i></a>
                                 <div class="product-action">
-                                    <a class="btn btn-dark" href="#">
+                                    <a class="btn btn-dark" href="javascript:void(0);" onclick="addToCart({{ $product->id }});">
                                         <i class="fa fa-shopping-cart"></i> Add To Cart
                                     </a>
                                 </div>
@@ -185,7 +185,7 @@
                     <div class="col-md-3">
                         <div class="card product-card">
                             <div class="product-image position-relative">
-                                <a href="" class="product-img">
+                                <a href="{{ route("front.product",$product->slug) }}" class="product-img">
                                     @if (!empty($productImage->image))
                                         <img class="card-img-top" src="{{ asset('/uploads/product/small/'.$productImage->image) }}" />
                                     @else
@@ -194,7 +194,7 @@
                                 </a>
                                 <a class="whishlist" href="222"><i class="far fa-heart"></i></a>
                                 <div class="product-action">
-                                    <a class="btn btn-dark" href="#">
+                                    <a class="btn btn-dark" href="javascript:void(0);" onclick="addToCart({{ $product->id }});">
                                         <i class="fa fa-shopping-cart"></i> Add To Cart
                                     </a>
                                 </div>
