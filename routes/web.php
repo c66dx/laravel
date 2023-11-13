@@ -84,6 +84,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/products/{product}/edit',[ProductController::class, 'edit'])->name('products.edit');
         Route::put('/products/{product}',[ProductController::class, 'update'])->name('products.update');
         Route::delete('/products/{product}',[ProductController::class, 'destroy'])->name('products.delete');
+        Route::get('/get-products',[ProductController::class,'getProducts'])->name('products.getProducts');
 
 
         Route::get('/product-subcategories',[ProductSubCategoryController::class, 'index'])->name('product-subcategories.index');
@@ -94,20 +95,19 @@ Route::group(['prefix' => 'admin'], function(){
 
         // temp-images.create
         Route::post('/upload-temp-image',[TempImagesController::class, 'create'])->name('temp-images.create');
+        
+        
+        Route::get('/getSlug',function(Request $request) {
+            $slug = '';
+            if (!empty($request->title)) {
+                $slug = Str::slug($request->title);
+            }
 
-
-    });
-
-    Route::get('/getSlug',function(Request $request) {
-        $slug = '';
-        if (!empty($request->title)) {
-            $slug = Str::slug($request->title);
-        }
-
-        return response()->json([
-            'status' => true,
-            'slug' => $slug
-        ]);
-    })->name('getSlug');
+            return response()->json([
+                'status' => true,
+                'slug' => $slug
+            ]);
+        })->name('getSlug');
     
+    });
 });
