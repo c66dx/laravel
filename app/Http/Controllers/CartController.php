@@ -128,4 +128,17 @@ class CartController extends Controller
             'message' => $message
         ]);
     }
+
+    public function checkout(){
+
+        //-- if cart is empty redirect to cart page
+        if (Cart::count()  == 0) {
+            return redirect()->route('front.cart');
+        }
+
+        //-- if user is not logged in then redirect to login page
+        if (Auth::check()->route('account.login'));
+
+        return view('front.checkout');
+    }
 }
