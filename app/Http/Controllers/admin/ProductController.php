@@ -173,8 +173,6 @@ class ProductController extends Controller
 
         $product = Product::find($id);
 
-
-
         $rules = [
             'title' => 'required',
             'slug' => 'required|unique:products,slug,'.$product->id.',id',

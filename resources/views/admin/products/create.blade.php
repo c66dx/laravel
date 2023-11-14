@@ -136,6 +136,7 @@
                                             <div class="mb-3">
                                                 <select multiple class="related-product w-100" name="related_products[]" id="related_products">
                                                 </select>	
+                                                <p class="error"></p>
                                             </div>
                                         </div>
                                     </div>
