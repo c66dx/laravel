@@ -15,7 +15,7 @@
 <section class=" section-10">
     <div class="container">
         <div class="login-form">
-            <form action="" method="post" name="registrationForm" id="registrationForm">
+            <form action="" method="get" name="registrationForm" id="registrationForm"> <!--method="post" es donde esta el problema, al cambiar a get se arrgla pero no se guarda el register en la base de datos (almenos ami prueba si puedes)-->
                 <h4 class="modal-title">Register Now</h4>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Name" id="name" name="name">
@@ -50,15 +50,18 @@
 
 @section('customJs')
 <script type="text/javascript">
+$("registrationFrom"),submit(function(event){
     event.preventDefault();
+
+    $["button[typt='submit']"].prop('disabled',true);
 
     $.ajax({
         url: '{{ route("account.processRegister") }}',
-        type: 'post',
+        type: 'post',  //aca tambien probe cambiar entre get y post en ambos se visualiza bien
         data: $(this).serializeArray(),
         dataType: 'json',
         success: function(response){
-
+            $["button[typt='submit']"].prop('disabled',false);
             var errors = response.errors;
 
             if (response.status == false){
@@ -102,5 +105,6 @@
             console.log("Something went wrong");
         }
     });
+});
 </script>
 @endsection

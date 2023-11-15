@@ -41,11 +41,19 @@ Route::post('/delete-cart',[CartController::class,'deleteItem'])->name('front.de
 //Route::post('/checkout',[CartController::class,'checkout'])->name('front.checkout');
 
 
-Route::get('/register',[AuthController::class, 'register'])->name('account.register');
-Route::post('/process-register',[AuthController::class, 'processRegister'])->name('account.processRegister');
 
-Route::get('/login',[AuthController::class, 'login'])->name('account.login');
+Route::group(['prefix' => 'account'],function(){
+    Route::group(['middleware' => 'guest'],function(){
 
+        Route::get('/login',[AuthController::class, 'login'])->name('account.login');
+        Route::get('/register',[AuthController::class, 'register'])->name('account.register');
+        Route::post('/process-register',[AuthController::class, 'processRegister'])->name('account.processRegister');
+    });
+    Route::group(['middleware' => 'auth'],function(){
+
+    });
+
+});
 
 Route::group(['prefix' => 'admin'], function(){
 
