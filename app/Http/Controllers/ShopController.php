@@ -14,14 +14,14 @@ class ShopController extends Controller
         $categorySelected = '';
         $subCategorySelected = '';
         $brandsArray = [];
-        
-        
+
+
 
         $categories = Category::orderBy('name','ASC')->with('sub_category')->where('status',1)->get();
         $brands = Brand::orderBy('name','ASC')->where('status',1)->get();
-        
+
         $products = Product::where('status',1);
-        
+
         // Apply Filters here
         if (!empty($categorySlug)) {
             $category = Category::where('slug',$categorySlug)->first();
@@ -38,7 +38,7 @@ class ShopController extends Controller
         if(!empty($request->get('brand'))) {
             $brandsArray = explode(',',$request->get('brand'));
             $products = $products->whereIn('brand_id',$brandsArray);
-        } 
+        }
 
         if ($request->get('price_max') != '' && $request->get('price_min') != '') {
             if ($request->get('price_max')  == 1000) {
@@ -48,7 +48,7 @@ class ShopController extends Controller
             }
         }
 
-        
+
         if ($request->get('sort') != '') {
             if ($request->get('sort') == 'latest') {
                 $products = $products->orderBy('id','DESC');
@@ -62,7 +62,6 @@ class ShopController extends Controller
         }
 
         $products = $products->paginate(6);
-
         $data['categories'] = $categories;
         $data['brands'] = $brands;
         $data['products'] = $products;
@@ -72,9 +71,9 @@ class ShopController extends Controller
         $data['priceMax'] = (intval($request->get('price_max')) == 0) ? 1000 : $request->get('price_max');
         $data['priceMin'] = intval($request->get('price_min'));
         $data['sort'] = $request->get('sort');
-        
 
-        return view('front.shop',$data); 
+
+        return view('front.shop',$data);
     }
     public function product($slug){
         $product = Product::where('slug',$slug)->with('product_images')->first();

@@ -47,14 +47,14 @@ class CartController extends Controller
                 $status = false;
                 $message = $product->title.' already added in cart';
             }
-            
+
         } else {
             Cart::add($product->id, $product->title, 1, $product->price, ['productImage' => (!empty($product->product_images)) ? $product->product_images->first() : '']);
             $status = true;
             $message = '<strong>'.$product->title.'<strong> added in your cart successfully';
             session()->flash('success',$message);
         }
-        
+
 
         return response()->json([
             'status' => $status,
@@ -137,7 +137,13 @@ class CartController extends Controller
         }
 
         //-- if user is not logged in then redirect to login page
-        if (Auth::check()->route('account.login'));
+        if (Auth::check() == false) {
+
+            if (!session()->has('url.intended')){
+            session(['url.intended' => url()->current()])
+            }
+            return redirect()->route('account.login');
+        }
 
         return view('front.checkout');
     }
