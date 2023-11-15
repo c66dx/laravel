@@ -129,7 +129,7 @@ class CartController extends Controller
         ]);
     }
 
-    public function checkout(){
+    /*public function checkout(){
 
         //-- if cart is empty redirect to cart page
         if (Cart::count()  == 0) {
@@ -146,5 +146,5 @@ class CartController extends Controller
         }
 
         return view('front.checkout');
-    }
+    }*/
 }

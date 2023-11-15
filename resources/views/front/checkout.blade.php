@@ -1,4 +1,4 @@
-@extends('front.layouts.app')
+<!-- @extends('front.layouts.app')
 
 @section('content')
 <section class="section-5 pt-3 pb-3 mb-3 bg-white">
@@ -23,22 +23,22 @@
                 <div class="card shadow-lg border-0">
                     <div class="card-body checkout-form">
                         <div class="row">
-                            
+
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name">
-                                </div>            
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name">
-                                </div>            
+                                </div>
                             </div>
-                            
+
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <input type="text" name="email" id="email" class="form-control" placeholder="Email">
-                                </div>            
+                                </div>
                             </div>
 
                             <div class="col-md-12">
@@ -48,60 +48,60 @@
                                         <option value="1">India</option>
                                         <option value="2">UK</option>
                                     </select>
-                                </div>            
+                                </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <textarea name="address" id="address" cols="30" rows="3" placeholder="Address" class="form-control"></textarea>
-                                </div>            
+                                </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <input type="text" name="appartment" id="appartment" class="form-control" placeholder="Apartment, suite, unit, etc. (optional)">
-                                </div>            
+                                </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <input type="text" name="city" id="city" class="form-control" placeholder="City">
-                                </div>            
+                                </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <input type="text" name="state" id="state" class="form-control" placeholder="State">
-                                </div>            
+                                </div>
                             </div>
-                                
+
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <input type="text" name="zip" id="zip" class="form-control" placeholder="Zip">
-                                </div>            
+                                </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <input type="text" name="mobile" id="mobile" class="form-control" placeholder="Mobile No.">
-                                </div>            
+                                </div>
                             </div>
-                                
+
 
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <textarea name="order_notes" id="order_notes" cols="30" rows="2" placeholder="Order Notes (optional)" class="form-control"></textarea>
-                                </div>            
+                                </div>
                             </div>
 
                         </div>
                     </div>
-                </div>    
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="sub-title">
                     <h2>Order Summery</h3>
-                </div>                    
+                </div>
                 <div class="card cart-summery">
                     <div class="card-body">
                         <div class="d-flex justify-content-between pb-2">
@@ -131,11 +131,11 @@
                         <div class="d-flex justify-content-between mt-2 summery-end">
                             <div class="h5"><strong>Total</strong></div>
                             <div class="h5"><strong>$420</strong></div>
-                        </div>                            
+                        </div>
                     </div>
-                </div>   
-                
-                <div class="card payment-form ">                        
+                </div>
+
+                <div class="card payment-form ">
                     <h3 class="card-title h5 mb-3">Payment Details</h3>
                     <div class="card-body p-0">
                         <div class="mb-3">
@@ -155,14 +155,15 @@
                         <div class="pt-4">
                             <a href="#" class="btn-dark btn btn-block w-100">Pay Now</a>
                         </div>
-                    </div>                        
+                    </div>
                 </div>
 
-                          
-                <!-- CREDIT CARD FORM ENDS HERE -->
-                    
-            </div>
+
+                CREDIT CARD FORM ENDS HERE -->
+
+<!--        </div>
         </div>
     </div>
 </section>
 @endsection
+-->
