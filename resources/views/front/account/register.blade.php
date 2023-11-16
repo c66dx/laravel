@@ -5,7 +5,7 @@
     <div class="container">
         <div class="light-font">
             <ol class="breadcrumb primary-color mb-0">
-                <li class="breadcrumb-item"><a class="white-text" href="#">Home</a></li>
+                <li class="breadcrumb-item"><a class="white-text" href="">Home</a></li>
                 <li class="breadcrumb-item">Register</li>
             </ol>
         </div>
@@ -43,7 +43,7 @@
                 </div>
                 <button type="submit" class="btn btn-dark btn-block btn-lg" value="Register">Register</button>
             </form>
-            <div class="text-center small">Already have an account? <a href="login.php">Login Now</a></div>
+            <div class="text-center small">Already have an account? <a href="{{route('account.login')}}">Login Now</a></div>
         </div>
     </div>
 </section>
