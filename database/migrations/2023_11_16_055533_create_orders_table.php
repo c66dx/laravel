@@ -21,10 +21,18 @@ return new class extends Migration
             $table->double('grand_total',10,2);
 
             // User Adderess related colums
-            $table->string('first');
-            
-            
-            
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email');
+            $table->string('mobile');
+            $table->foreignId('country_id')->constrained()->onDelete('cascade');
+            $table->text('address');
+            $table->string('apartament')->nullable();
+            $table->string('city');
+            $table->string('state');
+            $table->string('zip');
+            $table->text('notes');
+
             $table->timestamps();
         });
     }

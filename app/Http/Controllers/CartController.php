@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Country;
+use Illuminate\Support\Facades\Validator;
+
 
 
 class CartController extends Controller
@@ -154,5 +156,29 @@ class CartController extends Controller
         return view('front.checkout',[
             'countries' => $countries
         ]);
+    }
+    public function processCheckout(){
+
+        // step-1 Apply Validation
+
+        $validator = Validator::make($request->all(),[
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'country' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'zip' => 'required',
+            'mobile' => 'required'
+        ]);
+
+        if ($validator->fails()){
+            return response()->json([
+                'message' => 'Please fix the errors',
+                'status' => false,
+                'errors' => $validator->errors()
+            ]);
+        }
     }
 }
