@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('mobile');
             $table->foreignId('country_id')->constrained()->onDelete('cascade');
             $table->text('address');
-            $table->string('apartament')->nullable();
+            $table->string('apartment')->nullable();
             $table->string('city');
             $table->string('state');
             $table->string('zip');
