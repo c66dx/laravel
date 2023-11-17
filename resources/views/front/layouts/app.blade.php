@@ -29,7 +29,7 @@
 	<meta name="twitter:image" content="" />
 	<meta name="twitter:image:alt" content="" />
 	<meta name="twitter:card" content="summary_large_image" />
-	
+
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('front-assets/css/slick.css') }}" />
 	<link rel="stylesheet" type="text/css" href="{{ asset('front-assets/css/slick-theme.css') }}" />
@@ -47,7 +47,7 @@
 </head>
 <body data-instant-intensity="mousedown">
 
-<div class="bg-light top-header">        
+<div class="bg-light top-header">
 	<div class="container">
 		<div class="row align-items-center py-3 d-none d-lg-flex justify-content-between">
 			<div class="col-lg-4 logo">
@@ -57,8 +57,8 @@
 				</a>
 			</div>
 			<div class="col-lg-6 col-6 text-left  d-flex justify-content-end align-items-center">
-				<a href="account.php" class="nav-link text-dark">My Account</a>
-				<form action="">					
+				<a href="{{route('account.login')}}" class="nav-link text-dark">My Account</a>
+				<form action="">
 					<div class="input-group">
 						<input type="text" placeholder="Search For Products" class="form-control" aria-label="Amount (to the nearest dollar)">
 						<span class="input-group-text">
@@ -66,7 +66,7 @@
 					  	</span>
 					</div>
 				</form>
-			</div>		
+			</div>
 		</div>
 	</div>
 </div>
@@ -100,7 +100,7 @@
                         @endforeach
                         </ul>
                         @endif
-						
+
 					</li>
                     @endforeach
                     @endif
@@ -143,15 +143,15 @@
 							<li><a class="dropdown-item" href="#">Air Coolers</a></li>
 						</ul>
 					</li>-->
-					
-					
-      			</ul>      			
-      		</div>   
+
+
+      			</ul>
+      		</div>
 			<div class="right-nav py-0">
 				<a href="{{ route("front.cart") }}" class="ml-3 d-flex pt-2">
-					<i class="fas fa-shopping-cart text-primary"></i>					
+					<i class="fas fa-shopping-cart text-primary"></i>
 				</a>
-			</div> 		
+			</div>
       	</nav>
   	</div>
 </header>
@@ -178,7 +178,7 @@
 					<h3>Important Links</h3>
 					<ul>
 						<li><a href="about-us.php" title="About">About</a></li>
-						<li><a href="contact-us.php" title="Contact Us">Contact Us</a></li>						
+						<li><a href="contact-us.php" title="Contact Us">Contact Us</a></li>
 						<li><a href="#" title="Privacy">Privacy</a></li>
 						<li><a href="#" title="Privacy">Terms & Conditions</a></li>
 						<li><a href="#" title="Privacy">Refund Policy</a></li>
@@ -192,10 +192,10 @@
 					<ul>
 						<li><a href="{{route('account.login')}}" title="Sell">Login</a></li>
 						<li><a href="{{route('account.register')}}" title="Advertise">Register</a></li>
-						<li><a href="#" title="Contact Us">My Orders</a></li>						
+						<li><a href="#" title="Contact Us">My Orders</a></li>
 					</ul>
 				</div>
-			</div>			
+			</div>
 		</div>
 	</div>
 	<div class="copyright-area">
@@ -245,7 +245,7 @@ function addToCart(id){
 		data: {id:id},
 		dataType: 'json',
 		success: function (response) {
-			if (response.status == true) { 
+			if (response.status == true) {
 				window.location.href="{{ route('front.cart') }}";
 			} else {
 				alert(response.message);

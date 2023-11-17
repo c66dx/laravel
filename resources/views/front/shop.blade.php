@@ -5,7 +5,7 @@
         <div class="container">
             <div class="light-font">
                 <ol class="breadcrumb primary-color mb-0">
-                    <li class="breadcrumb-item"><a class="white-text" href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a class="white-text" href="{{ route("front.home") }}">Home</a></li>
                     <li class="breadcrumb-item active">Shop</li>
                 </ol>
             </div>
@@ -14,12 +14,12 @@
 
     <section class="section-6 pt-5">
         <div class="container">
-            <div class="row">            
+            <div class="row">
                 <div class="col-md-3 sidebar">
                     <div class="sub-title">
                         <h2>Categories</h3>
                     </div>
-                    
+
                     <div class="card">
                         <div class="card-body">
                             <div class="accordion accordion-flush" id="accordionExample">
@@ -32,7 +32,7 @@
                                             {{ $category->name }}
                                         </button>
                                     </h2>
-                                    @else 
+                                    @else
                                     <a href="{{ route("front.shop",$category->slug) }}" class="nav-item nav-link {{( $categorySelected == $category->id) ? 'text-primary' : ''}}">{{ $category->name }}</a>
                                     @endif
 
@@ -47,10 +47,10 @@
                                         </div>
                                     </div>
                                     @endif
-                                </div>  
+                                </div>
                                 @endforeach
                                 @endif
-            
+
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                     <div class="sub-title mt-5">
                         <h2>Brand</h3>
                     </div>
-                    
+
                     <div class="card">
                         <div class="card-body">
                             @if ($brands->isNotEmpty() )
@@ -70,7 +70,7 @@
                                 </label>
                             </div>
                             @endforeach
-                            
+
                             @endif
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                     <div class="sub-title mt-5">
                         <h2>Price</h3>
                     </div>
-                    
+
                     <div class="card">
                         <div class="card-body">
                             <input type="text" class="js-range-slider" name="my_range" value="" />
@@ -96,13 +96,13 @@
                                         <option value="latest" {{ ($sort == 'latest') ? 'selected' : ''  }}>Latest</option>
                                         <option value="price_desc" {{ ($sort == 'price_desc') ? 'selected' : ''  }}>Price High</option>
                                         <option value="price_asc" {{ ($sort == 'price_asc') ? 'selected' : ''  }}>Price Low</option>
-                                    </select>                           
+                                    </select>
                                 </div>
                             </div>
                         </div>
 
-                       
-                        
+
+
                         @if ($products->isNotEmpty())
                         @foreach ($products as $product)
                         @php
@@ -121,14 +121,14 @@
 
                                     </a>
 
-                                    <a class="whishlist" href="222"><i class="far fa-heart"></i></a>                            
+                                    <a class="whishlist" href="222"><i class="far fa-heart"></i></a>
 
                                     <div class="product-action">
                                         <a class="btn btn-dark" href="javascript:void(0);" onclick="addToCart({{ $product->id }});">
                                             <i class="fa fa-shopping-cart"></i> Add To Cart
-                                        </a>                            
+                                        </a>
                                     </div>
-                                </div>                        
+                                </div>
                                 <div class="card-body text-center mt-3">
                                     <a class="h6 link" href="{{ route("front.product",$product->slug) }}">{{$product->title}}</a>
                                     <div class="price mt-2">
@@ -137,9 +137,9 @@
                                         <span class="h6 text-underline"><del>${{$product->compare_price}}</del></span>
                                         @endif
                                     </div>
-                                </div>                        
-                            </div>                                               
-                        </div>  
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
                         @endif
 
@@ -152,7 +152,7 @@
         </div>
     </section>
 
-    
+
 @endsection
 
 @section('customJs')
@@ -183,7 +183,7 @@
     $("#sort").change(function(){
         apply_filters();
     });
-    
+
     function apply_filters(){
         var brands = [];
 
@@ -200,7 +200,7 @@
         if (brands.length > 0) {
             url += '&brand='+brands.toString()
         }
-        
+
         // Price Range filter
         url += '&price_min='+slider.result.from+'&price_max='+slider.result.to;
 
@@ -211,6 +211,6 @@
         window.location.href = url+'&brand='+brands.toString();
     }
 
-    
+
 </script>
 @endsection
